@@ -2,6 +2,9 @@ include(joinpath(@__DIR__, "ko", "standard_ko.jl"))
 
 # number -> korean for numbers under 10000
 function small_convert_ko(number::Integer; native_korean::Bool = false)
+    if number == 0
+        return "영"
+    end
     ones = native_korean ? ko_ones_native : ko_ones
     tens = native_korean ? ko_tens_native : ko_tens
     small = ko_small_numbers
